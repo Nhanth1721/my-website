@@ -1,0 +1,62 @@
+// 1. Biến (Variables)
+$primary: #1a2e5a;
+$secondary: #f1f5f9;
+$text: #333;
+$bg-light: #fff;
+$bg-dark: #121212;
+
+// 2. Mixin
+@mixin flex-center($dir: row, $justify: center) {
+    display: flex;
+    flex-direction: $dir;
+     align-items: center;
+     justify-content: $justify;
+}
+
+// 3. Reset & Typography
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; color: $text; line-height: 1.6; transition: 0.3s; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.section { padding: 3rem 0; h2 { text-align: center; margin-bottom: 2rem; } }
+
+// 4. Flexbox (Navbar) - Nesting SCSS
+.header {
+    background: $primary; padding: 1rem 0;
+    .navbar {
+    @include flex-center(row, space-between);
+    .logo, a { color: #fff; text-decoration: none; }
+    .nav-links {
+       list-style: none; @include flex-center(column, center); gap: 1rem; // Mobile-first (dọc)
+       button { background: none; border: none; color: #fff; cursor: pointer; }
+    }
+  }
+}
+
+// 5. Bảng (Table)
+table {
+    width: 100%; border-collapse: collapse;
+    th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+    th { background-color: $secondary; color: $primary; }
+}
+
+// 6. CSS Grid (Dự án) - Mobile-first (1 cột)
+.projects-grid {
+    display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+    .project-card { background: $secondary; padding: 1.5rem; border-radius: 8px; }
+}
+
+// 7. Form
+.contact-form { max-width: 500px; margin: 0 auto; .form-group input { width: 100%; padding: 10px; margin-top: 5px; } }
+.btn-submit { @include flex-center(); width: 100%; padding: 12px; background: $primary; color: #fff; margin-top: 15px; border: none;}
+
+// Dark mode state
+body.dark-mode { background: $bg-dark; color: $secondary; table, .project-card { background: #1e1e1e; color: #fff; } th { background: #333; } }
+
+// 8. Media Queries (2 Breakpoints)
+@media (min-width: 768px) {
+    .header .navbar .nav-links { flex-direction: row; } // Tablet: Xếp ngang
+    .projects-grid { grid-template-columns: repeat(2, 1fr); } // Tablet: 2 cột
+}
+@media (min-width: 1024px) {
+    .projects-grid { grid-template-columns: repeat(3, 1fr); } // Desktop: 3 cột
+}

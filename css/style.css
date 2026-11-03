@@ -1,0 +1,129 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  transition: 0.3s;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 3rem 0;
+}
+.section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header {
+  background: #1a2e5a;
+  padding: 1rem 0;
+}
+.header .navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .navbar .logo, .header .navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+.header .navbar .nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.header .navbar .nav-links button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table th, table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+table th {
+  background-color: #f1f5f9;
+  color: #1a2e5a;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.projects-grid .project-card {
+  background: #f1f5f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.contact-form .form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.btn-submit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  background: #1a2e5a;
+  color: #fff;
+  margin-top: 15px;
+  border: none;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #f1f5f9;
+}
+body.dark-mode table, body.dark-mode .project-card {
+  background: #1e1e1e;
+  color: #fff;
+}
+body.dark-mode th {
+  background: #333;
+}
+
+@media (min-width: 768px) {
+  .header .navbar .nav-links {
+    flex-direction: row;
+  }
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
